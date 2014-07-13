@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		id="<%= packageName %>" 
+		version="0.0.1" >
+
+    <name><%= pluginName %></name>
+    <description><%= pluginDescription %></description>
+    <author><%= author %></author>
+    <keywords></keywords>
+    <license>Apache 2.0 license</license>
+
+    <js-module src="www/<%= pluginName %>.js" name="<%= pluginName %>">
+        <clobbers target="<%= pluginName %>" />
+    </js-module>
+    
+    <platform name="android">
+		<source-file src="src/android/<%= serviceName %>.java" target-dir="src/<%= packageName.split('.').join('/') %>" />
+        
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="<%= serviceName %>">
+                <param name="android-package" value="<%= packageName %>.<%= serviceName %>" />
+            </feature>
+        </config-file>
+        
+    </platform>
+</plugin>
